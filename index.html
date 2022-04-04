@@ -7,12 +7,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
     <link href="./assets/css/style.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div id="root">
-        
+        <div id="appcontainer">
+            <div id="contactscontainer">
+                <div id="profilebar">
+                    <img :src="`./assets/img/avatar${profile.avatar}.jpg`" alt="profile picture">
+                    <p>{{ profile.name }}</p>
+                    <div id="profileicons">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div id="notificationspopup">
+                    <div id="popupicon">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div id="popuptext">
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <span>Attiva notifiche desktop</span>
+                    </div>
+                </div>
+                <div id="searchbar">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" id="searchinput" placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <div id="contactsbar">
+                    <div v-for="contact in contacts" class="contactcard" :class="contact.visible == true && 'visible'">
+                        <div>
+                            <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="profile picture">
+                        </div>
+                        <div class="contacttext">
+                            <p>{{ contact.name }}</p>
+                            <p>Ultimo messaggio inviato</p>
+                        </div>
+                        <div class="time">
+                            <p>12:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="chatcontainer">
+                <div id="chatcontactbar">
+                    <img :src="`./assets/img/avatar${contacts[0].avatar}.jpg`" alt="profile picture">
+                    <div id="contactnamestatus">
+                        <p>{{ contacts[0].name }}</p>
+                        <span>Ultimo accesso oggi alle 12:00</span>
+                    </div>
+                    <div id="chatcontacticons">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div id="chat">
+                    <div v-for="msg in contacts[0].messages" class="msgcontainer">
+                        <div class="msg" :class="msg.status == 'sent' ? 'sent' : 'received'">
+                            <p>{{ msg.message }}</p>
+                            <p class="msgdate">{{ msg.date }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="inputbar">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <input type="text" id="chatinput" placeholder="Scrivi un messaggio">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+            </div>
+        </div>
     </div>
     <script defer src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script defer src="./assets/scripts/script.js" rel="text/javascript"></script>

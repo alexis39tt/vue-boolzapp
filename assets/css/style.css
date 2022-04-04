@@ -1,9 +1,307 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --gray: #e9eaed;
+    --dgray: #b0b1b3;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dgray);
+    border-radius: 10px;
+}
+
+body {
+    height: calc(100vh - 20px);
+    background: rgb(0, 150, 136);
+    background: linear-gradient(180deg,
+            rgba(0, 150, 136, 1) 0%,
+            rgba(51, 166, 153, 1) 15%,
+            rgba(221, 219, 209, 1) 15%,
+            rgba(221, 219, 209, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#appcontainer {
+    width: 80%;
+    height: calc(100vh - 40px);
+    margin: 20px auto;
+    display: flex;
+}
+
+/* PROFILO */
+
+#contactscontainer {
+    width: 35%;
+    background: white;
+    border-right: 1px solid var(--dgray);
+}
+
+#profilebar {
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    background: var(--gray);
+    display: flex;
+    position: relative;
+}
+
+#profilebar img {
+    width: 50px;
+    clip-path: circle();
+}
+
+#profilebar p {
+    line-height: 50px;
+    margin-left: 10px;
+}
+
+#profileicons {
+    position: absolute;
+    right: 15px;
+}
+
+#profilebar i {
+    font-size: 1.2rem;
+    margin: 0 7.5px;
+    color: var(--dgray);
+    line-height: 50px;
+    cursor: pointer;
+}
+
+/* POPUP NOTIFICHE E SEARCHBAR */
+
+#notificationspopup {
+    height: 80px;
+    background: #99dafd;
+    padding: 0 20px;
+    display: flex;
+}
+
+#popupicon {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    clip-path: circle();
+}
+
+#popupicon i {
+    color: #99dafd;
+    font-size: 1.3rem;
+    line-height: 60px;
+}
+
+#popuptext {
+    font-size: 0.9rem;
+    margin: auto;
+    margin-left: 10px;
+    line-height: 20px;
+}
+
+#popuptext span {
+    font-size: 0.8rem;
+    color: #535353;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#popuptext span:hover {
+    color: #838383;
+}
+
+#searchbar {
+    height: 50px;
+    padding: 5px;
+    background: #fafafa;
+}
+
+#searchbar button {
+    color: var(--dgray);
+    width: calc(15%);
+    font-size: 0.9rem;
+    height: 100%;
+    margin: 0px;
+    margin-right: -2.5px;
+    outline: none;
+    border: 1px solid var(--gray);
+    background: white;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+}
+
+#searchbar input {
+    width: calc(85%);
+    height: 100%;
+    font-size: 0.9rem;
+    padding: 0 5px;
+    margin: 0;
+    margin-left: -2.5px;
+    outline: none;
+    border: 1px solid var(--gray);
+    border-radius: 0 5px 5px 0;
+}
+
+/* CONTATTI */
+
+#contactsbar {
+    overflow-y: auto;
+    height: calc(100% - 50px - 80px - 70px);
+}
+
+.contactcard {
+    height: 80px;
+    padding: 10px 20px;
+    background: white;
+    border-bottom: 1px solid var(--gray);
+    cursor: pointer;
+    display: flex;
+}
+
+.contactcard.visible {
+    background: var(--gray);
+}
+
+.contactcard img {
+    width: 60px;
+    clip-path: circle();
+}
+
+.contacttext {
+    margin-left: 20px;
+}
+
+.contacttext p:nth-child(2), .contactcard .time {
+    color: var(--dgray);
+    font-size: 0.8rem;
+}
+
+.contactcard .time {
+    margin-left: auto;
+}
+
+/* CHAT */
+
+#chatcontainer {
+    width: 65%;
+    background-image: url("../img/mine.jpg");
+    position: relative;
+}
+
+#chatcontactbar {
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    background: var(--gray);
+    display: flex;
+}
+
+#chatcontactbar img {
+    width: 50px;
+    clip-path: circle();
+}
+
+#chatcontactbar p, #chatcontactbar span {
+    margin-left: 10px;
+}
+
+#contactnamestatus {
+    margin: 12px 0;
+}
+
+
+#contactnamestatus p {
+    line-height: 10px;
+}
+
+#contactnamestatus span {
+    color: #838383;
+    font-size: 0.8rem;
+}
+
+#chatcontacticons {
+    position: absolute;
+    right: 15px;
+}
+
+#chatcontactbar i {
+    font-size: 1.2rem;
+    margin: 0 7.5px;
+    color: var(--dgray);
+    line-height: 50px;
+    cursor: pointer;
+}
+
+#chat{
+    width: 100%;
+    height: calc(100% - 140px);
+    padding: 20px 50px;
+    overflow-y: auto;
+}
+
+#chat .msgcontainer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#chat .msg{
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+}
+
+#chat .sent{
+    background: #d8f8bf;
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+#chat .received{
+    background: white;
+}
+
+#chat .msgdate{
+    position: absolute;
+    right: 0;
+}
+
+#inputbar{
+    height: 70px;
+    background: #f2eeed;
+    display: flex;
+    padding: 10px 0;
+}
+
+#inputbar i{
+    color: #838383;
+    font-size: 1.5rem;
+    line-height: 50px;
+    margin: 0 40px;
+    cursor: pointer;
+}
+
+#inputbar input{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0 15px;
 }
