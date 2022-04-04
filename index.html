@@ -70,10 +70,10 @@
                     </div>
                 </div>
                 <div id="chat">
-                    <div v-for="msg in contacts[0].messages" class="msgcontainer">
+                    <div v-for="msg, i in contacts[0].messages" class="msgcontainer">
                         <div class="msg" :class="msg.status == 'sent' ? 'sent' : 'received'">
                             <p>{{ msg.message }}</p>
-                            <p class="msgdate">{{ msg.date }}</p>
+                            <p class="msgdate">{{ datemodified(i) }}</p>
                         </div>
                     </div>
                 </div>

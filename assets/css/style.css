@@ -39,6 +39,10 @@ body {
     background-size: cover;
 }
 
+i:hover{
+    color: #535353 !important;
+}
+
 #appcontainer {
     width: 80%;
     height: calc(100vh - 40px);
@@ -66,6 +70,7 @@ body {
 #profilebar img {
     width: 50px;
     clip-path: circle();
+    cursor: pointer;
 }
 
 #profilebar p {
@@ -80,7 +85,7 @@ body {
 
 #profilebar i {
     font-size: 1.2rem;
-    margin: 0 7.5px;
+    padding: 0 7.5px;
     color: var(--dgray);
     line-height: 50px;
     cursor: pointer;
@@ -112,6 +117,7 @@ body {
     margin: auto;
     margin-left: 10px;
     line-height: 20px;
+    overflow: hidden;
 }
 
 #popuptext span {
@@ -185,6 +191,7 @@ body {
 
 .contacttext {
     margin-left: 20px;
+    overflow: hidden;
 }
 
 .contacttext p:nth-child(2), .contactcard .time {
@@ -225,7 +232,6 @@ body {
     margin: 12px 0;
 }
 
-
 #contactnamestatus p {
     line-height: 10px;
 }
@@ -242,7 +248,7 @@ body {
 
 #chatcontactbar i {
     font-size: 1.2rem;
-    margin: 0 7.5px;
+    padding: 0 7.5px;
     color: var(--dgray);
     line-height: 50px;
     cursor: pointer;
@@ -262,8 +268,9 @@ body {
 }
 
 #chat .msg{
-    margin: 20px 0;
+    margin: 10px 0;
     padding: 15px;
+    padding-right: 70px;
     border-radius: 10px;
     position: relative;
 }
@@ -280,7 +287,10 @@ body {
 
 #chat .msgdate{
     position: absolute;
-    right: 0;
+    right: 10px;
+    bottom: 5px;
+    color: #838383;
+    font-size: 0.8rem;
 }
 
 #inputbar{
@@ -294,7 +304,7 @@ body {
     color: #838383;
     font-size: 1.5rem;
     line-height: 50px;
-    margin: 0 40px;
+    padding: 0 40px;
     cursor: pointer;
 }
 

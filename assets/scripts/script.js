@@ -173,6 +173,10 @@ new Vue(
 
         },
         methods: {
-
+            datemodified: function(i){
+                let date = this.contacts[0].messages[i].date;
+                let newdate = date.slice(10,16);
+                return newdate;
+            }
         }
     });
