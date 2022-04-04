@@ -177,6 +177,14 @@ new Vue(
                 let date = this.contacts[0].messages[i].date;
                 let newdate = date.slice(10,16);
                 return newdate;
+            },
+            newmessage: function(newmsg){
+                this.contacts[0].messages.push( {
+                    date: '10/01/2020 15:30:55',
+                    message: newmsg,
+                    status: 'sent'
+                })
+                this.newmsg = ""
             }
         }
     });
