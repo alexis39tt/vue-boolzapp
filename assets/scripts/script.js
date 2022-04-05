@@ -3,10 +3,10 @@ new Vue(
         el: '#root',
         data: {
             profile:
-                {
-                    name: 'Sofia',
-                    avatar: '_io',
-                },
+            {
+                name: 'Sofia',
+                avatar: '_io',
+            },
             contacts: [
                 {
                     name: 'Michele',
@@ -169,22 +169,37 @@ new Vue(
                         }
                     ],
                 }
-            ]
-
+            ],
+            openedchat: 0
         },
         methods: {
-            datemodified: function(i){
-                let date = this.contacts[0].messages[i].date;
-                let newdate = date.slice(10,16);
+            datemodified: function (i) {
+                let date = this.contacts[this.openedchat].messages[i].date;
+                let newdate;
+                if (date.length > 10) {
+                     newdate = date.slice(10, 16);
+                }
+                else{
+                    newdate = date.slice(0, 5)
+                }
                 return newdate;
             },
-            newmessage: function(newmsg){
-                this.contacts[0].messages.push( {
-                    date: '10/01/2020 15:30:55',
+            newmessage: function (newmsg) {
+                let finaldate;
+                let current = new Date();
+                finaldate = current.toLocaleTimeString();
+                console.log(finaldate)
+                this.contacts[this.openedchat].messages.push({
+                    date: finaldate,
                     message: newmsg,
                     status: 'sent'
                 })
                 this.newmsg = ""
+            },
+            changechat: function (i) {
+                this.contacts[this.openedchat].visible = false;
+                this.openedchat = i;
+                this.contacts[i].visible = true
             }
         }
     });

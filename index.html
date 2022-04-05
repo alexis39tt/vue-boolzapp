@@ -42,7 +42,7 @@
                     <input type="text" id="searchinput" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <div id="contactsbar">
-                    <div v-for="contact in contacts" class="contactcard" :class="contact.visible == true && 'visible'">
+                    <div v-for="contact, i in contacts" class="contactcard" :class="contact.visible == true && 'visible'" @click="changechat(i)">
                         <div>
                             <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="profile picture">
                         </div>
@@ -58,9 +58,9 @@
             </div>
             <div id="chatcontainer">
                 <div id="chatcontactbar">
-                    <img :src="`./assets/img/avatar${contacts[0].avatar}.jpg`" alt="profile picture">
+                    <img :src="`./assets/img/avatar${contacts[openedchat].avatar}.jpg`" alt="profile picture">
                     <div id="contactnamestatus">
-                        <p>{{ contacts[0].name }}</p>
+                        <p>{{ contacts[openedchat].name }}</p>
                         <span>Ultimo accesso oggi alle 12:00</span>
                     </div>
                     <div id="chatcontacticons">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div id="chat">
-                    <div v-for="msg, i in contacts[0].messages" class="msgcontainer">
+                    <div v-for="msg, i in contacts[openedchat].messages" class="msgcontainer">
                         <div class="msg" :class="msg.status == 'sent' ? 'sent' : 'received'">
                             <p>{{ msg.message }}</p>
                             <p class="msgdate">{{ datemodified(i) }}</p>
