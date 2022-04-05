@@ -177,24 +177,25 @@ new Vue(
                 let date = this.contacts[this.openedchat].messages[i].date;
                 let newdate;
                 if (date.length > 10) {
-                     newdate = date.slice(10, 16);
+                    newdate = date.slice(10, 16);
                 }
-                else{
+                else {
                     newdate = date.slice(0, 5)
                 }
                 return newdate;
             },
             newmessage: function (newmsg) {
-                let finaldate;
-                let current = new Date();
-                finaldate = current.toLocaleTimeString();
-                console.log(finaldate)
-                this.contacts[this.openedchat].messages.push({
-                    date: finaldate,
-                    message: newmsg,
-                    status: 'sent'
-                })
-                this.newmsg = ""
+                if (newmsg != '' && newmsg != null && newmsg != undefined && newmsg != ' ') {
+                    let finaldate;
+                    let current = new Date();
+                    finaldate = current.toLocaleTimeString();
+                    this.contacts[this.openedchat].messages.push({
+                        date: finaldate,
+                        message: newmsg,
+                        status: 'sent'
+                    })
+                    this.newmsg = ""
+                }
             },
             changechat: function (i) {
                 this.contacts[this.openedchat].visible = false;

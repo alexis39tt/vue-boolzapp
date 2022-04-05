@@ -279,10 +279,12 @@ i:hover{
     background: #d8f8bf;
     margin-left: auto;
     justify-content: flex-end;
+    box-shadow: 2px 2px 5px gray;
 }
 
 #chat .received{
     background: white;
+    box-shadow: 2px 2px 5px gray;
 }
 
 #chat .msgdate{
