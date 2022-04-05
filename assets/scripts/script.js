@@ -56,6 +56,7 @@ new Vue(
                     name: 'Samuele',
                     avatar: '_3',
                     visible: false,
+                    filtered: true,
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -78,6 +79,7 @@ new Vue(
                     name: 'Alessandro B.',
                     avatar: '_4',
                     visible: false,
+                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -95,6 +97,7 @@ new Vue(
                     name: 'Alessandro L.',
                     avatar: '_5',
                     visible: false,
+                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -112,6 +115,7 @@ new Vue(
                     name: 'Claudia',
                     avatar: '_6',
                     visible: false,
+                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -134,6 +138,7 @@ new Vue(
                     name: 'Federico',
                     avatar: '_7',
                     visible: false,
+                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -151,6 +156,7 @@ new Vue(
                     name: 'Davide',
                     avatar: '_8',
                     visible: false,
+                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -170,7 +176,9 @@ new Vue(
                     ],
                 }
             ],
+            showncontacts: [],
             msgpool: ['Ok!', 'Sono d\'accordo', 'Facciamo più tardi, va bene?', 'Ottimo  così', 'Per me no', 'Ci sentiamo dopo'],
+            search: '',
             newmsg: '',
             openedchat: 0
         },
@@ -201,7 +209,7 @@ new Vue(
                 }
             },
             answer: function () {
-                let r = Math.round(Math.random()*(this.msgpool.length-1));
+                let r = Math.round(Math.random() * (this.msgpool.length - 1));
                 let finaldate;
                 let current = new Date();
                 finaldate = current.toLocaleTimeString();
@@ -215,6 +223,13 @@ new Vue(
                 this.contacts[this.openedchat].visible = false;
                 this.openedchat = i;
                 this.contacts[i].visible = true
+            },
+            searchcon: function (search) {
+                this.showncontacts = this.contacts.filter(elm => elm.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+            },
+            hidepopup: function () {
+                let popup = document.getElementById("notificationspopup")
+                popup.style.display = "none"
             }
         }
     });

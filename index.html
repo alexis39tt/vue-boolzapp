@@ -32,29 +32,47 @@
                     <div id="popupicon">
                         <i class="fa-solid fa-bell-slash"></i>
                     </div>
-                    <div id="popuptext">
+                    <div id="popuptext" @click="hidepopup">
                         <p>Ricevi notifiche di nuovi messaggi</p>
                         <span>Attiva notifiche desktop</span>
                     </div>
                 </div>
                 <div id="searchbar">
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" id="searchinput" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" id="searchinput" placeholder="Cerca o inizia una nuova chat" v-model="search"
+                        @input="searchcon(search)">
                 </div>
                 <div id="contactsbar">
-                    <div v-for="contact, i in contacts" class="contactcard"
-                        :class="contact.visible == true && 'visible'" @click="changechat(i)">
-                        <div>
-                            <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="profile picture">
+                    <template v-if="showncontacts.length == 0 && !search">
+                        <div v-for="contact, i in contacts" class="contactcard"
+                            :class="contact.visible == true && 'visible'" @click="changechat(i)">
+                            <div>
+                                <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="profile picture">
+                            </div>
+                            <div class="contacttext">
+                                <p>{{ contact.name }}</p>
+                                <p>Ultimo messaggio inviato</p>
+                            </div>
+                            <div class="time">
+                                <p>12:00</p>
+                            </div>
                         </div>
-                        <div class="contacttext">
-                            <p>{{ contact.name }}</p>
-                            <p>Ultimo messaggio inviato</p>
+                    </template>
+                    <template v-else>
+                        <div v-for="contact, i in showncontacts" class="contactcard"
+                            :class="contact.visible == true && 'visible'" @click="changechat(i)">
+                            <div>
+                                <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="profile picture">
+                            </div>
+                            <div class="contacttext">
+                                <p>{{ contact.name }}</p>
+                                <p>Ultimo messaggio inviato</p>
+                            </div>
+                            <div class="time">
+                                <p>12:00</p>
+                            </div>
                         </div>
-                        <div class="time">
-                            <p>12:00</p>
-                        </div>
-                    </div>
+                    </template>
                 </div>
             </div>
             <div id="chatcontainer">
