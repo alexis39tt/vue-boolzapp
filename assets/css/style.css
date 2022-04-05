@@ -310,8 +310,12 @@ i:hover{
     cursor: pointer;
 }
 
+#inputbar i.fa-microphone{
+    margin-left: 5px;
+}
+
 #inputbar input{
-    width: 100%;
+    width: calc(100% - 220px);
     border: none;
     border-radius: 5px;
     font-size: 1rem;

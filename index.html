@@ -42,7 +42,8 @@
                     <input type="text" id="searchinput" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <div id="contactsbar">
-                    <div v-for="contact, i in contacts" class="contactcard" :class="contact.visible == true && 'visible'" @click="changechat(i)">
+                    <div v-for="contact, i in contacts" class="contactcard"
+                        :class="contact.visible == true && 'visible'" @click="changechat(i)">
                         <div>
                             <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="profile picture">
                         </div>
@@ -78,9 +79,15 @@
                     </div>
                 </div>
                 <div id="inputbar">
-                    <i class="fa-regular fa-face-smile"></i>
-                    <input type="text" id="chatinput" placeholder="Scrivi un messaggio" @keyup.enter="newmessage(newmsg)" v-model="newmsg">
-                    <i class="fa-solid fa-microphone"></i>
+                    <div>
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    <input type="text" id="chatinput" placeholder="Scrivi un messaggio"
+                        @keyup.enter="newmessage(newmsg)" v-model.trim="newmsg" autofocus>
+                    <div>
+                        <i class="fa-solid fa-paper-plane" v-show="newmsg" @click="newmessage(newmsg)"></i>
+                        <i class="fa-solid fa-microphone" v-show="!newmsg"></i>
+                    </div>
                 </div>
             </div>
         </div>

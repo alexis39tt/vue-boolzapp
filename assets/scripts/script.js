@@ -170,6 +170,8 @@ new Vue(
                     ],
                 }
             ],
+            msgpool: ['Ok!', 'Sono d\'accordo', 'Facciamo più tardi, va bene?', 'Ottimo  così', 'Per me no', 'Ci sentiamo dopo'],
+            newmsg: '',
             openedchat: 0
         },
         methods: {
@@ -194,8 +196,20 @@ new Vue(
                         message: newmsg,
                         status: 'sent'
                     })
-                    this.newmsg = ""
+                    this.newmsg = "";
+                    setTimeout(this.answer, 1000);
                 }
+            },
+            answer: function () {
+                let r = Math.round(Math.random()*(this.msgpool.length-1));
+                let finaldate;
+                let current = new Date();
+                finaldate = current.toLocaleTimeString();
+                this.contacts[this.openedchat].messages.push({
+                    date: finaldate,
+                    message: this.msgpool[r],
+                    status: 'received'
+                })
             },
             changechat: function (i) {
                 this.contacts[this.openedchat].visible = false;
