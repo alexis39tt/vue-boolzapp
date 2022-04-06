@@ -246,7 +246,7 @@ new Vue(
                     this.contacts[this.openedchat].messages.splice(i, 1)
                 }
                 else{
-                    alert('Non puoi cancellare tutti i messaggi!')
+                    document.getElementById("chat").innerHTML = ""
                 }
             }
         }
