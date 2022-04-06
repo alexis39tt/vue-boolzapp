@@ -56,7 +56,6 @@ new Vue(
                     name: 'Samuele',
                     avatar: '_3',
                     visible: false,
-                    filtered: true,
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -79,7 +78,6 @@ new Vue(
                     name: 'Alessandro B.',
                     avatar: '_4',
                     visible: false,
-                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -97,7 +95,6 @@ new Vue(
                     name: 'Alessandro L.',
                     avatar: '_5',
                     visible: false,
-                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -115,7 +112,6 @@ new Vue(
                     name: 'Claudia',
                     avatar: '_6',
                     visible: false,
-                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -138,7 +134,6 @@ new Vue(
                     name: 'Federico',
                     avatar: '_7',
                     visible: false,
-                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -156,7 +151,6 @@ new Vue(
                     name: 'Davide',
                     avatar: '_8',
                     visible: false,
-                    filtered: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -181,7 +175,7 @@ new Vue(
             search: '',
             newmsg: '',
             currentchat: 0,
-            openedchat: 0
+            openedchat: 0,
         },
         methods: {
             datemodified: function (i) {
@@ -225,12 +219,22 @@ new Vue(
                 this.contacts[this.openedchat].visible = false;
                 this.openedchat = i;
                 this.contacts[i].visible = true
+                console.log(i)
             },
             searchcon: function (search) {
-                this.showncontacts = this.contacts.filter(elm => elm.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+                this.showncontacts = this.contacts.filter(elm => elm.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())) 
             },
             hidepopup: function () {
                 document.getElementById("notificationspopup").style.display = "none"
+            },
+            changetime: function(date){
+                if (date.length > 10) {
+                    newdate = date.slice(10, 16);
+                }
+                else {
+                    newdate = date.slice(0, 5)
+                }
+                return newdate;
             }
         }
     });

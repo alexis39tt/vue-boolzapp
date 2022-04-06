@@ -51,10 +51,10 @@
                             </div>
                             <div class="contacttext">
                                 <p>{{ contact.name }}</p>
-                                <p>Ultimo messaggio inviato</p>
+                                <p>{{ contact.messages[contact.messages.length-1].message }}</p>
                             </div>
                             <div class="time">
-                                <p>12:00</p>
+                                <p>{{ changetime(contact.messages[contact.messages.length-1].date) }}</p>
                             </div>
                         </div>
                     </template>
@@ -66,10 +66,10 @@
                             </div>
                             <div class="contacttext">
                                 <p>{{ contact.name }}</p>
-                                <p>Ultimo messaggio inviato</p>
+                                <p>{{ contact.messages[contact.messages.length-1].message }}</p>
                             </div>
                             <div class="time">
-                                <p>12:00</p>
+                                <p>{{ changetime(contact.messages[contact.messages.length-1].date) }}</p>
                             </div>
                         </div>
                     </template>
