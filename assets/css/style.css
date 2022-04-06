@@ -297,7 +297,12 @@ i:hover{
     top: 7.5px;
     color: #838383;
     font-size: 0.8rem;
+    display: none;
     cursor: pointer;
+}
+
+.msg:hover .del{
+    display: block !important;
 }
 
 #chat .del:hover{

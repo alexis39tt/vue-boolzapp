@@ -93,7 +93,7 @@
                         <div class="msg" :class="msg.status == 'sent' ? 'sent' : 'received'">
                             <p>{{ msg.message }}</p>
                             <p class="msgdate">{{ datemodified(i) }}</p>
-                            <i class="fa-solid fa-circle-xmark del" @click="deletemsg(i)" v-show="contacts[openedchat].messages.length > 1"></i>
+                            <i class="fa-solid fa-circle-xmark del" @click="deletemsg(i)"></i>
                         </div>
                     </div>
                 </div>
