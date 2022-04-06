@@ -60,7 +60,7 @@
                     </template>
                     <template v-else>
                         <div v-for="contact, i in showncontacts" class="contactcard"
-                            :class="contact.visible == true && 'visible'" @click="changechat(i)">
+                            :class="contact.visible == true && 'visible'" @click="changefilteredchat(i)">
                             <div>
                                 <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="profile picture">
                             </div>
@@ -93,6 +93,7 @@
                         <div class="msg" :class="msg.status == 'sent' ? 'sent' : 'received'">
                             <p>{{ msg.message }}</p>
                             <p class="msgdate">{{ datemodified(i) }}</p>
+                            <i class="fa-solid fa-circle-xmark del" @click="deletemsg(i)" v-show="contacts[openedchat].messages.length > 1"></i>
                         </div>
                     </div>
                 </div>

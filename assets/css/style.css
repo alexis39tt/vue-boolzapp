@@ -171,6 +171,10 @@ i:hover{
     height: calc(100% - 50px - 80px - 70px);
 }
 
+.contactcard:first-child{
+    border-top: 1px solid var(--gray);
+}
+
 .contactcard {
     height: 80px;
     padding: 10px 20px;
@@ -285,6 +289,19 @@ i:hover{
 #chat .received{
     background: white;
     box-shadow: 2px 2px 5px gray;
+}
+
+#chat .del{
+    position: absolute;
+    right: 10px;
+    top: 7.5px;
+    color: #838383;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+#chat .del:hover{
+    color: red !important;
 }
 
 #chat .msgdate{

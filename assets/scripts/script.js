@@ -219,15 +219,20 @@ new Vue(
                 this.contacts[this.openedchat].visible = false;
                 this.openedchat = i;
                 this.contacts[i].visible = true
-                console.log(i)
+            },
+            changefilteredchat: function (i) {
+                this.contacts[this.openedchat].visible = false;
+                this.showncontacts[this.openedchat].visible = false;
+                this.openedchat = i;
+                this.showncontacts[i].visible = true
             },
             searchcon: function (search) {
-                this.showncontacts = this.contacts.filter(elm => elm.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())) 
+                this.showncontacts = this.contacts.filter(elm => elm.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
             },
             hidepopup: function () {
                 document.getElementById("notificationspopup").style.display = "none"
             },
-            changetime: function(date){
+            changetime: function (date) {
                 if (date.length > 10) {
                     newdate = date.slice(10, 16);
                 }
@@ -235,6 +240,14 @@ new Vue(
                     newdate = date.slice(0, 5)
                 }
                 return newdate;
+            },
+            deletemsg: function (i) {
+                if (this.contacts[this.openedchat].messages.length > 1) {
+                    this.contacts[this.openedchat].messages.splice(i, 1)
+                }
+                else{
+                    alert('Non puoi cancellare tutti i messaggi!')
+                }
             }
         }
     });
