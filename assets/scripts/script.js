@@ -180,6 +180,7 @@ new Vue(
             msgpool: ['Ok!', 'Sono d\'accordo', 'Facciamo più tardi, va bene?', 'Ottimo  così', 'Per me no', 'Ci sentiamo dopo'],
             search: '',
             newmsg: '',
+            currentchat: 0,
             openedchat: 0
         },
         methods: {
@@ -199,7 +200,8 @@ new Vue(
                     let finaldate;
                     let current = new Date();
                     finaldate = current.toLocaleTimeString();
-                    this.contacts[this.openedchat].messages.push({
+                    this.currentchat = this.openedchat
+                    this.contacts[this.currentchat].messages.push({
                         date: finaldate,
                         message: newmsg,
                         status: 'sent'
@@ -213,7 +215,7 @@ new Vue(
                 let finaldate;
                 let current = new Date();
                 finaldate = current.toLocaleTimeString();
-                this.contacts[this.openedchat].messages.push({
+                this.contacts[this.currentchat].messages.push({
                     date: finaldate,
                     message: this.msgpool[r],
                     status: 'received'
@@ -228,8 +230,7 @@ new Vue(
                 this.showncontacts = this.contacts.filter(elm => elm.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
             },
             hidepopup: function () {
-                let popup = document.getElementById("notificationspopup")
-                popup.style.display = "none"
+                document.getElementById("notificationspopup").style.display = "none"
             }
         }
     });
